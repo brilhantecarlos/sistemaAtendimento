@@ -1,0 +1,74 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Senha {
+  id               Int               @id @default(autoincrement())
+  codigo           String            @unique
+  tipo             TipoSenha
+  dataCriacao      DateTime          @default(now()) @map("data_criacao")
+  dataChamada      DateTime?         @map("data_chamada")
+  guiche           String?
+  tempoAtendimento Int?              @map("tempo_atendimento")
+  status           StatusAtendimento @default(NAO_ATENDIDA)
+
+  @@map("senhas")
+}
+
+model Guiche {
+  id              Int          @id @default(autoincrement())
+  numero          Int          @unique
+  status          StatusGuiche @default(DISPONIVEL)
+  ultimaSenha     String?      @map("ultima_senha")
+  dataAtualizacao DateTime     @updatedAt @map("data_atualizacao")
+
+  @@map("guiches")
+}
+
+model Painel {
+  id              Int      @id @default(autoincrement())
+  ultimasChamadas String   @map("ultimas_chamadas")
+  dataAtualizacao DateTime @updatedAt @map("data_atualizacao")
+
+  @@map("painel")
+}
+
+model Estatistica {
+  id              Int      @id @default(autoincrement())
+  data            DateTime @unique
+  totalSenhas     Int      @map("total_senhas")
+  senhasAtendidas Int      @map("senhas_atendidas")
+  senhasSP        Int      @map("senhas_sp")
+  senhasSG        Int      @map("senhas_sg")
+  senhasSE        Int      @map("senhas_se")
+  tempoMedioSP    Float    @map("tempo_medio_sp")
+  tempoMedioSG    Float    @map("tempo_medio_sg")
+  tempoMedioSE    Float    @map("tempo_medio_se")
+
+  @@map("estatisticas")
+}
+
+enum TipoSenha {
+  SP
+  SG
+  SE
+}
+
+enum StatusAtendimento {
+  NAO_ATENDIDA
+  EM_ATENDIMENTO
+  ATENDIDA
+  DESISTENCIA
+}
+
+enum StatusGuiche {
+  DISPONIVEL
+  OCUPADO
+  FECHADO
+}
