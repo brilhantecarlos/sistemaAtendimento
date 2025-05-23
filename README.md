@@ -4,19 +4,19 @@ Projeto desenvolvido para a disciplina de **Desenvolvimento Mobile de Alta Perfo
 
 ## Descrição
 
-Este sistema é uma solução web responsiva para controle de atendimento em filas de laboratórios médicos. O foco é otimizar o fluxo de senhas com diferentes níveis de prioridade, proporcionando uma experiência organizada, eficiente e rastreável para clientes e atendentes.
+Este sistema é uma solução web para controle de atendimento em filas de clínicas e consultórios médicos. O foco é otimizar o fluxo de senhas com diferentes níveis de prioridade, proporcionando uma experiência organizada, eficiente e rastreável para clientes e atendentes.
 
-## Agentes do Sistema
+## Quem são os agentes do Sistema?
 
-- **AS - Agente Sistema:** Emite senhas e responde aos comandos da atendente.
+- **AS - Agente Sistema:** Responsável por emitir senhas e responder aos comandos da atendente.
 - **AA - Agente Atendente:** Chama a próxima senha da fila e registra o atendimento.
-- **AC - Agente Cliente:** Retira a senha em um totem e aguarda o atendimento no painel.
+- **AC - Agente Cliente:** Retira a senha em um totemcom o Agente Sistema e aguarda o atendimento no painel.
 
 ## Tipos de Senhas
 
-- **SP:** Senha Prioritária
-- **SG:** Senha Geral
-- **SE:** Senha para retirada de Exames
+- **SP:** Senha Prioritária Indicada Idosos, Pessoas com Necessidades Especiais e Pessoas com Deficiência
+- **SG:** Senha Geral - Atendimento ao público em geral
+- **SE:** Senha para retirada de Exames - Senha para aqueles que somente vieram buscar o seu eaame.
 
 ### Tempos Médios de Atendimento (TM)
 
@@ -28,7 +28,7 @@ Este sistema é uma solução web responsiva para controle de atendimento em fil
 
 ### Regras de Atendimento
 
-A ordem de atendimento deve alternar entre uma senha **SP** e uma senha **SG ou SE**, conforme disponível. Exemplo:
+A ordem de atendimento deve alternar entre uma senha **SP** e uma senha **SG ou SE**, conforme disponível.
 
 ## Funcionalidades
 
